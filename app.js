@@ -33,13 +33,13 @@ async function carregarLeaderboard() {
     const tbody = document.getElementById('leaderboard-body');
 
     try {
-        // Faz a query utilizando o índice que você criou:
-        // Maior lixo reciclado primeiro (desc), menor tempo em caso de empate (asc)
+        // Faz a query utilizando os critérios atualizados:
+        // Menor tempo de Speedrun primeiro (asc), maior lixo fabricado em caso de empate (desc)
         const { data: partidas, error } = await client
             .from('partidas')
             .select('*')
-            .order('lixos_reciclados', { ascending: false })
-            .order('tempo_total_segundos', { ascending: true })
+            .order('tempo_total_segundos', { ascending: true })  // 1º Critério: Menor Tempo
+            .order('lixos_reciclados', { ascending: false })     // 2º Critério (Desempate): Mais barras fabricadas
             .limit(10); // Traz os Top 10
 
         if (error) {
