@@ -40,7 +40,10 @@ p {
     font-size: 1.2rem;
     color: #98c1d9;
 }
+a {
 
+    color: #ffffff;
+}
 /* Tabela com efeito Glassmorphism (Vidro) */
 .table-container {
     background: rgba(255, 255, 255, 0.05);
